@@ -17,4 +17,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: Deploy Application 
         run: |
-          devenv up
+          nix develop --impure -c devenv up
