@@ -16,6 +16,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Checkout  
-        run: |
-          touch made_it
-          nix develop --impure -c devenv up -d -t=false
+        run: nix develop --impure -c devenv up -t=false
