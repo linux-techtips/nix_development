@@ -33,7 +33,15 @@
             ({ pkgs, config, ... }: {
               packages = [ pythonEnv ];
 
-              processes.run.exec = "python package";
+              processes.run.exec = ''
+                if [ -f .server.lock ]; then
+                  pkill uvicorn
+                  rm .server.lock
+                fi
+
+                uvicorn package.__main__:app --host 0.0.0.0 --port 8000 &
+                touch .server.lock
+              ''; 
 
               scripts.dev.exec = ''
                 uvicorn package.__main__:app --reload
