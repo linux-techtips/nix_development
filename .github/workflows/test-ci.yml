@@ -16,4 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Checkout  
-        run: nix develop --impure -c devenv up -t=false
+        run: |
+          if [ -f .server.lock ]; then
+            pkill uvicorn
+          fi
+
+          uvicorn package.__main__:app --host 0.0.0.0 --port 8000 &
+          touch .server.lock
