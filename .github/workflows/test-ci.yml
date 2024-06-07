@@ -1,10 +1,12 @@
 name: Test-CI
 
 on:
-  push:
-    branches: [ "prod" ]
   pull_request:
-    branches: [ "prod" ]
+    types: [ closed ]
+    branches: [ "main" ]
+
+  push:
+    branches: [ "main" ]
   
   workflow_dispatch:
 
