@@ -14,7 +14,7 @@ async def root() -> str:
             <title>SupplyPay</title>
         </head>
         <body>
-            <h1>Haha, all your sanity is belong to me!<h1>
+            <h1>Haha, all your sanity is belong to me!!!<h1>
         </body>
     </html>
    ''' 
